@@ -1,0 +1,409 @@
+local supported = {"solara", "codex", "arceus x", "delta", "hydrogen", "vega x", "frost", "frostware", "ethos", "alysse", "alysse android", "trigon evo", "trigon", "moreunc", "fluxus", "evon"}
+local unsupported = {"incognito", "lunar", "feather"}
+local lplayer = game.Players.LocalPlayer
+local char = lplayer.Character
+local human = char.Humanoid
+local walkspeed = human.WalkSpeed
+local jumppower = human.JumpPower
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local buildtype = "GUI"
+local Synapticsver = "1.0.0"
+local vertype = "Beta"
+
+--window
+local Window = Rayfield:CreateWindow({Name = "Synaptics "..buildtype.." | ".. vertype,LoadingTitle = "Synaptics ".. buildtype,LoadingSubtitle = vertype,ConfigurationSaving = {Enabled = true,FolderName = "SynapticsGUI",FileName = "betaconfig"},Discord = {Enabled = false,Invite = "noinvitelink", RememberJoins = true},KeySystem = false,KeySettings = {Title = "Synaptics ".. buildtype,Subtitle = "Key System",Note = "No key system is provided! (as of right now)",FileName = "SynapticsKeyLiteSolara",SaveKey = false,GrabKeyFromSite = false,Key = {"somekeywillbehereidk"}}})
+
+--tabs
+local Home = Window:CreateTab("Home", 7733960981)
+local Admin = Window:CreateTab("Admin", 7733920644)
+local Game = Window:CreateTab("Games", 7733799795)
+local Univ = Window:CreateTab("Universal", 7733954611)
+local Chat = Window:CreateTab("Chat", 7733993311)
+local UI = Window:CreateTab("GUI", 7733970390)
+local Spoof = Window:CreateTab("Spoofs", 7743868000)
+local Aim = Window:CreateTab("Aim", 7733765307)
+local Qol = Window:CreateTab("Quality of Life", 7733984995)
+local Misc = Window:CreateTab("Misc", 7733955511)
+local Cmds = Window:CreateTab("Commands", 7734079055)
+local Log = Window:CreateTab("Changelog", 7733960880)
+local About = Window:CreateTab("About", 7733964719)
+
+--custom functions
+function getclientid()
+local analyticsrv = game:GetService("RbxAnalyticsService");return analyticsrv:GetClientId()
+end
+function getexecutorversion()
+return select(2, identifyexecutor())
+end
+function getplayername()
+local plr = game.Players.LocalPlayer;return plr.Name
+end
+function getplayerid()
+local plr = game.Players.LocalPlayer;return plr.UserId
+end
+function getping()
+local rawping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString();local pingstr = rawping:sub(1,#rawping-7);local pingnum = tonumber(pingstr);local ping = math.round(pingnum);return ping.. " ms"
+end
+function getfps()
+local rawfps = game:GetService("Stats").Workspace.Heartbeat:GetValue();local fpsnum = tonumber(rawfps);local fps = math.round(fpsnum);return fps
+end
+function getgameid()
+return game.PlaceId
+end
+function getgamename()
+local marketsrv =  game:GetService("MarketplaceService");return marketsrv:GetProductInfo(getgameid()).Name
+end
+function getjobid()
+return game.JobId
+end
+function kick(reason)
+game.Players.LocalPlayer:Kick(reason);return
+end
+
+--home tab
+local EmptySectionHome = Home:CreateSection("")
+local WelcomeLabel = Home:CreateLabel("Welcome to Synaptics")
+local UserInfo = Home:CreateLabel("Your username is ".. getplayername().. " (User ID: "..getplayerid().. ")")
+local GameInfo = Home:CreateLabel("You're playing ".. getgamename().. " (Game ID: ".. getgameid().. ")")
+local ExecutorInfo = Home:CreateLabel("You're using ".. identifyexecutor().. " (Level ".. getthreadidentity().. ")")
+local PingInfo = Home:CreateLabel("You have ".. getfps().. " FPS and ".. getping().. " ping")
+--executor testing tab
+
+--admin
+local EmptySectionAdmin = Admin:CreateSection("")
+local Quirky = Admin:CreateButton({Name = "Quirky CMD",Callback = function()
+   loadstring(game:HttpGet("https://gist.github.com/someunknowndude/38cecea5be9d75cb743eac8b1eaf6758/raw"))()
+   end,})
+local IY = Admin:CreateButton({Name = "Infinite Yield",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+   end,})
+local IYR = Admin:CreateButton({Name = "Infinite Yield Reborn",Callback = function()
+   loadstring(game:HttpGet("https://github.com/fuckusfm/infiniteyield-reborn/raw/master/source"))()
+   end,})
+local NAMADM = Admin:CreateButton({Name = "Nameless Admin",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/FilteringEnabled/NamelessAdmin/main/Source"))()
+   end,})
+
+--game tab
+    local EmptySectionGame = Game:CreateSection("")
+   local Jailbreak = Game:CreateButton({Name = "Jailbreak",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/zyn789/Aoi-Script/main/Jailbreak"))()
+   end,})
+   local Cartriderdite = Game:CreateButton({Name = "Card Ride into Rdite",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/ZeianRussell/ZeianRussell/main/Rdite%20Script%20%5BNew%5D"))()
+   end,})
+   local NDS = Game:CreateButton({Name = "Natural Disaster Survival",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/thaibao/main/TbaoHubNaturalDisasterSurvival"))()
+   end,})
+   local PM = Game:CreateButton({Name = "PM",Callback = function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/kiwixcheat/000x999/main/projectmugetsu.lua'))()
+   end,})
+    local COUNTERBLOX = Game:CreateButton({Name = "Counter Blox",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/toasty-dev/pissblox/main/solariscb_beta.lua",true))()
+   end,})
+    local AnimePunSim2 = Game:CreateButton({Name = "Anime Punching Simulator 2",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Christian2703/Main/main/Mainscript", true))()
+   end,})
+    local PlankIt = Game:CreateButton({Name = "Plank It!",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Bac0nHck/Scripts/main/PlankIt"))()
+   end,})
+   local TrampBatSim = Game:CreateButton({Name = "Trampoline Battle Simulator",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Bac0nHck/Scripts/main/Trampoline%20Battle%20Simulator"))()
+   end,})
+      local TeddyEsc = Game:CreateButton({Name = "Teddy Escape",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Bac0nHck/Scripts/main/Teddy%20Escape%20NEW"))()
+   end,})
+         local BSS = Game:CreateButton({Name = "Bee Swarm Simulator",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/BaconBossScript/BeeSwarmSim/main/BeeSwarmSim"))()
+   end,})
+    local TH = Game:CreateButton({Name = "Tower of Hell",Callback = function()
+   loadstring(game:HttpGet("https://github.com/hello-n-bye/starry/blob/main/main.lua/?raw=true", true))()
+   end,})
+    local Findpowers = Game:CreateButton({Name = "Find the Powers",Callback = function()
+   loadstring(game:HttpGet("https://rawscripts.net/raw/Find-The-Powers-160-Gui-Script-14401", true))()
+   end,})
+    local BI2 = Game:CreateButton({Name = "Break in 2",Callback = function()
+   loadstring(game:HttpGet("https://github.com/hello-n-bye/starry/blob/main/main.lua/?raw=true", true))()
+   end,})
+   local BF = Game:CreateButton({Name = "Blox Fruits",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Nearz1/Milenio-X-Hub/main/Universal%20FE"))()
+   end,})
+   local HB = Game:CreateButton({Name = "Hoopz Basketball",Callback = function()
+   loadstring(game:HttpGet("https://paste.fo/raw/229d44565614"))()
+   end,})
+      local Arsenal = Game:CreateButton({Name = "Arsenal",Callback = function()
+   loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/b95e8fecdf824e41f4a030044b055add.lua"))()
+   end,})
+    local BadBusiness = Game:CreateButton({Name = "Bad Business",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/synprotectgui/synprotectgui/main/Loader.lua",true))()
+   end,})
+       local PD = Game:CreateButton({Name = "Project Delta",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/synprotectgui/synprotectgui/main/Loader.lua",true))()
+   end,})
+     local Bladeball = Game:CreateButton({Name = "Blade Ball",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/No6No6No7yt/Lumin-Hub/main/Blade.lua"))() 
+   end,})
+    local KH = Game:CreateButton({Name = "Kohls Admin House NBC",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/quivings/KAH/main/CMD%20v3.lua"))()
+   end,})
+       local MM2 = Game:CreateButton({Name = "Murder Mystery 2",Callback = function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/Roman34296589/SnapSanix-GUI-MM2/main/SnapSanix%20GUI%20mm2.lua'))()
+   end,})
+       local BridgeSim = Game:CreateButton({Name = "Bridge Simulator",Callback = function()
+   loadstring(game:HttpGet("https://github.com/Bac0nHck/Scripts/blob/main/BridgeSimulator?raw=true"))()
+   end,})
+    local BlockDigging = Game:CreateButton({Name = "Block Digging Simulator",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Bac0nHck/Scripts/main/Block%20Digging%20Simulator"))()
+   end,})
+       local GamePetSim = Game:CreateButton({Name = "Gamer Pet Simulator",Callback = function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/Bac0nHck/Scripts/main/Gamer%20Life%20Simulator"))()
+   end,})
+    local BetterMusic = Game:CreateButton({Name = "Better Music?",Callback = function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/Bac0nHck/Scripts/main/BetterMusic"))()
+   end,})
+     local Jujutsu = Game:CreateButton({Name = "Jujutsu Shenanigans",Callback = function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/JJS/main/Solara"))()
+   end,})
+        local LumberTycoon2 = Game:CreateButton({Name = "Lumber Tycoon 2",Callback = function()
+  loadstring(game:HttpGet('https://raw.githubusercontent.com/Butterisgood/Butter/main/lt2'))("")
+   end,})
+    local Eggtree = Game:CreateButton({Name = "Egg Tree Incremental",Callback = function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/Bac0nHck/Scripts/main/Egg%20Tree%20Incremental"))()
+   end,})
+    local Fightschool = Game:CreateButton({Name = "Fight in a school",Callback = function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/JayXSama/Fight-in-a-school/main/Solara"))()
+   end,})
+       local FabledLegacy = Game:CreateButton({Name = "Fabled Legacy",Callback = function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/OhhMyGehlee/FL/main/Solara"))()
+   end,})
+       local ProjectSlayers = Game:CreateButton({Name = "Project Slayers",Callback = function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/NukeVsCity/Scripts2024/main/projslayr"))()
+   end,})
+     local Retrostudio = Game:CreateButton({Name = "Retro Studio",Callback = function()
+   loadstring(game:HttpGet('https://pastebin.com/raw/mruhg5iZ'))()
+   end,})
+
+--universal tab
+    local EmptySectionUniv = Univ:CreateSection("")
+    local CLOVR = Univ:CreateButton({Name = "CLOVR",Callback = function()
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/vr.lua"))()
+   end,})
+       local GB2 = Univ:CreateButton({Name = "Gamepass Buyer V2",Callback = function()
+  loadstring(game:HttpGet("https://gist.githubusercontent.com/dark-modz/6982de484735e730494b2d5a10fd6a2a/raw/a92563b0cd6a63683341a09f54baccea5349ed69/feGamepassV2",true))()
+   end,})
+       local SysHub = Univ:CreateButton({Name = "System Hub",Callback = function()
+  loadstring(game:HttpGet("https://gist.githubusercontent.com/dark-modz/6982de484735e730494b2d5a10fd6a2a/raw/a92563b0cd6a63683341a09f54baccea5349ed69/feGamepassV2",true))()
+   end,})
+    local AnimLogger = Univ:CreateButton({Name = "Animation Logger",Callback = function()
+    loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Animation-Logger-13175"))()
+   end,})
+    local DEX = Univ:CreateButton({Name = "DEX Explorer",Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/infyiff/backup/main/dex.lua"))()
+   end,})
+
+--chat tab
+    local EmptySectionChat = Chat:CreateSection("")
+    local Emojichat = Chat:CreateButton({Name = "Emoji Chat",Callback = function()
+    loadstring(game:HttpGetAsync'https://raw.githubusercontent.com/Exunys/Emoji-Chat/main/Resources/Main.lua')''
+   end,})
+    local Nologging = Chat:CreateButton({Name = "No Logging",Callback = function()
+    loadstring(game:HttpGet('https://rawscripts.net/raw/Universal-Script-NoLogging-13339'))()
+   end,})
+    local Vadrifts = Chat:CreateButton({Name = "Vadrifts Chat Bypass",Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/vqmpjayZ/Bypass/main/vadrifts"))()
+   end,})
+     local Hrtasnbyp = Chat:CreateButton({Name = "Heartasians Chat Bypass",Callback = function()
+    loadstring(game:HttpGet('https://rawscripts.net/raw/Universal-Script-chat-bypasser-13878'))()
+   end,})
+
+--ui tab
+    local EmptySectionUI = UI:CreateSection("")
+     local alysse = UI:CreateButton({Name = "Alysse Android UI",Callback = function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/NathTheDev/AlysseAndroid/main/AlysseUI.lua'))()
+   end,})
+    local synapseui = UI:CreateButton({Name = "Synapse X Internal UI",Callback = function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/delta-hydro/secret-host-haha/main/syn_ui_new.lua'))()
+   end,})
+       local trigonevoui = UI:CreateButton({Name = "Trigon Evo Android UI",Callback = function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/relbaldski/bald/main/baldscript.lua'))()
+   end,})
+          local vegaxui = UI:CreateButton({Name = "Vega X Android UI",Callback = function()
+    loadstring(game:HttpGet('https://paste.fo/raw/me1b5df1653d'))()
+   end,})
+          local krnlui = UI:CreateButton({Name = "KRNL Internal UI",Callback = function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/FreezyWare/Remake-Executor/main/Executor/Krnl-Legacy.Lua'))()
+   end,})
+     local krampusui = UI:CreateButton({Name = "Krampus Internal UI",Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/FreezyWare/Remake-Executor/main/Executor/Krampus.Lua"))()
+   end,})
+    local evonui = UI:CreateButton({Name = "Evon Android UI",Callback = function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/0rLpNjmb'))()
+   end,})
+
+     local axban = UI:CreateButton({Name = "Arceus X Ban UI",Callback = function()
+    loadstring(game:HttpGet('https://pastebin.com/raw/rpabjTsv'))()
+   end,})
+
+--aim tab
+    local EmptySectionAim = Aim:CreateSection("")
+     local unnamedesp = Aim:CreateButton({Name = "Unnamed ESP",Callback = function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/ic3w0lf22/Unnamed-ESP/master/UnnamedESP.lua'))()
+   end,})
+        local randomesp = Aim:CreateButton({Name = "Random ESP",Callback = function()
+    loadstring(game:HttpGet('https://paste.gg/p/anonymous/2ae4ceae47774c0e933dc423a4d6a793/files/0cf31d1dc7f640288d534338af459dd9/raw'))()
+   end,})
+      local azure = Aim:CreateButton({Name = "Azure Modded",Callback = function()
+    loadstring(game:HttpGet('a'))()
+    end,})
+    local thunderclient = Aim:CreateButton({Name = "Thunder Client Lite",Callback = function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/ThunderScriptSolutions/ThunderClientForSolara/main/ThunderClientGameSupport'))()
+   end,})
+
+--qol tab
+    local EmptySectionQol = Qol:CreateSection("")
+    local sirius = Qol:CreateButton({Name = "Sirius",Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SiriusSoftwareLTD/sirius/request/source.lua"))()
+   end,})
+
+--commands
+    local EmptySectionCmds = Cmds:CreateSection("")
+    local Noclip = Cmds:CreateToggle({
+   Name = "Noclip",CurrentValue = false,Callback = function(Value)
+    if Value == true then
+        local speaker = game.Players.LocalPlayer
+        for _, child in pairs(speaker.Character:GetDescendants()) do
+            if child:IsA("BasePart") and child.CanCollide == true and child.Name ~= floatName then
+                child.CanCollide = false
+            end
+        end
+    else
+        local speaker = game.Players.LocalPlayer
+        for _, child in pairs(speaker.Character:GetDescendants()) do
+            if child:IsA("BasePart") and child.CanCollide == false and child.Name ~= floatName then
+                child.CanCollide = true
+            end
+        end
+    end
+   end,})
+       local fly = Cmds:CreateButton({Name = "Fly",Callback = function()
+    loadstring(game:HttpGet('https://pastefy.app/nFLFeUWS/raw'))()
+   end,})
+   local walkspeed = Cmds:CreateSlider({Name = "Set your Walkspeed",
+   Range = {0, 1000},Increment = 1,
+   Suffix = "Walkspeed",
+   CurrentValue = walkspeed,
+   Callback = function(Value)
+    human.WalkSpeed = Value
+   end,
+})
+   local jumppower = Cmds:CreateSlider({Name = "Set your Jumppower",
+   Range = {0, 1000},Increment = 1,
+   Suffix = "Jumppower",
+   CurrentValue = jumppower,
+   Callback = function(Value)
+    human.JumpPower = Value
+   end,
+})
+       local infjump = Cmds:CreateButton({Name = "Infinite Jump",Callback = function()
+        game:GetService("UserInputService").JumpRequest:connect(function()
+            human:ChangeState("Jumping")
+        end)
+   end,})
+
+--spoof
+    local EmptySectionSpoof = Spoof:CreateSection("")
+    local SpoofHwid = Spoof:CreateButton({Name = "HWID Spoofer",Callback = function() local encodedhwid = base64_encode(string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122)))
+        local decodedhwid = base64_decode(encodedhwid);local function SPOOFHWID_fake_script()
+	    local script = Instance.new('LocalScript', SpooferInstance)
+	    function gethwid() return decodedhwid end end
+        coroutine.wrap(SPOOFHWID_fake_script)()
+   end,})
+    local SetIdentity = Spoof:CreateInput({
+   Name = "Spoof Identity",
+    PlaceholderText = "Identity",
+   RemoveTextAfterFocusLost = true,
+   Callback = function(Text)
+        local function SPOOFIDENTITY_fake_script()
+	    local script = Instance.new('LocalScript', SpoofingInstance)
+	    function getthreadidentity() return Text end
+        function getthreadcontext() return Text end
+        function printidentity() print("Current identity is ".. Text) return end
+        end
+        coroutine.wrap(SPOOFIDENTITY_fake_script)()
+   end,})
+       local sethwid = Spoof:CreateInput({
+   Name = "Set HWID",
+    PlaceholderText = "HWID",
+   RemoveTextAfterFocusLost = true,
+   Callback = function(Text)
+        local function SPOOFHWIDSET_fake_script()
+	    local script = Instance.new('LocalScript', SpoofingInstance)
+	    function gethwid() return Text end
+        end
+        coroutine.wrap(SPOOFHWIDSET_fake_script)()
+   end,})
+       local Antiwebhook = Spoof:CreateButton({Name = "Anti-Webhook",Callback = function() local encodedhwid = base64_encode(string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..string.char(math.random(97,122))..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122))..math.random(1,9)..string.char(math.random(97,122)))
+        loadstring(game:HttpGet('https://pastebin.com/raw/JUqusaQx'))()
+   end,})
+          local setexec = Spoof:CreateInput({
+   Name = "Spoof Executor",
+    PlaceholderText = "Executor",
+   RemoveTextAfterFocusLost = true,
+   Callback = function(Text)
+        local function SPOOFEXEC_fake_script()
+	    local script = Instance.new('LocalScript', SpoofingInstance)
+	    function identifyexecutor() return Text end function getexecutorname() return Text end function executorname() return Text end
+        end
+        coroutine.wrap(SPOOFEXEC_fake_script)()
+   end,})
+
+--misc tab
+local EmptySectionMisc = Misc:CreateSection("")
+local AxBanHWID = Misc:CreateButton({Name = "Arceus X Ban Checker",Callback = function()
+        local http = cloneref(game:GetService("HttpService"));local succ, result = pcall(function()return http:JSONDecode(game:HttpGet("https://raw.githubusercontent.com/SPDM-Team/Arceus-X-NEO-public/main/bannedusers"))
+        end)
+        if succ and result[gethwid()] then Rayfield:Notify({Title = "Ban Check Result",Content = "You are banned from Arceus X.",Duration = 6.5,Image = 4483362458,Actions = { Ignore = {Name = "Okay!",Callback = function()end},},}) else Rayfield:Notify({Title = "Ban Check Result",Content = "You are not banned from Arceus X.",Duration = 6.5,Image = 4483362458,Actions = { Ignore = {Name = "Okay!",Callback = function()end},},})
+        end
+   end,})
+local Kick = Misc:CreateInput({
+   Name = "Kick Yourself",
+   PlaceholderText = "Reason",
+   RemoveTextAfterFocusLost = false,
+   Callback = function(Text)
+    kick(Text)
+   end,
+})
+local Execute = Misc:CreateInput({
+   Name = "Execute",
+   PlaceholderText = "Code",
+   RemoveTextAfterFocusLost = false,
+   Callback = function(Text)
+   if Text == "print(identifyexecutor())" then
+       print("Synaptics ".. Synapticsver)
+    elseif Text == "print(getexecutorname())" then
+        print("Synaptics ".. Synapticsver)
+    elseif Text == "print(getexecutorversion())" then
+        print(Synapticsver)
+    else
+   loadstring(Text)()
+    end
+   end,
+})
+
+--changelog
+    local EmptySectionLog = Log:CreateSection("")
+    local Logfor100 = Log:CreateParagraph({Title = "1.0.0 Beta", Content = "[+] First Release"})
+    --debug
+local ColorPicker = Home:CreateColorPicker({Name = "Color Picker",Color = Color3.fromRGB(255,255,255),
+    Callback = function(Value)
+        
+    end})
+
+--notification
+Rayfield:Notify({Title = "Loaded",Content = "The script has loaded succesfully.,",Duration = 6.5,Image = 4483362458,Actions = { Ignore = {Name = "Okay!",Callback = function()end},},})
+while wait(1) do
+    PingInfo:Set("You have ".. getfps().. " FPS and ".. getping().. " ping")
+    UserInfo:Set("Your username is ".. getplayername().. " (User ID: "..getplayerid().. ")")
+    GameInfo:Set("You're playing ".. getgamename().. " (Game ID: ".. getgameid().. ")")
+    ExecutorInfo:Set("You're using ".. identifyexecutor().. " (Level ".. getthreadidentity().. ")")
+end
